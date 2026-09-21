@@ -1,0 +1,27 @@
+#include <iostream>
+
+#include "color.h";
+#include "vec3.h"
+
+int main()
+{
+	int ImageWidth = 256;
+	int ImageHeight = 256;
+
+	std::cout << "P3\n" << ImageWidth << ' ' << ImageHeight << "\n255\n";
+
+	for (int j = 0; j < ImageHeight; ++j)
+	{
+		std::clog << "\rScanlines remaining: " << (ImageHeight - j) << ' ' << std::flush;
+
+		for (int i = 0; i < ImageWidth; ++i)
+		{
+			auto PixelColor = Color(double(i) / (ImageWidth - 1), double(j) / (ImageHeight - 1), 0);
+			WriteColor(std::cout, PixelColor);
+		}
+	}
+
+	std::clog << "\rDone.                   \n";
+
+	return 0;
+}

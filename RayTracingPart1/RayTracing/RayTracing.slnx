@@ -4,5 +4,8 @@
     <Platform Name="x86" />
   </Configurations>
   <Project Path="PPM_Output/PPM_Output.vcxproj" Id="21589348-59b1-4d22-a8c7-337ae8a95291" />
+  <Project Path="Rays/Rays.vcxproj" Id="e4d0fbb5-4623-4955-b03b-7ef1730e0b05" />
   <Project Path="RayTracing/RayTracing.vcxproj" Id="003e2943-db9a-420f-9050-5b9dc2331502" />
+  <Project Path="Test/Test.vcxproj" Id="f7f23a9f-18d7-419d-90dc-6162a4992bf4" />
+  <Project Path="Vec3Practice/Vec3Practice.vcxproj" Id="c0983963-423b-4adf-8069-4ed9a6b23f00" />
 </Solution>
