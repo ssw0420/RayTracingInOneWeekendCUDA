@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\Documents\\GitHub\\RayTracingInOneWeekendCUDA\\RayTracingPart1\\RayTracing\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{21589348-59B1-4D22-A8C7-337AE8A95291}|PPM_Output\\PPM_Output.vcxproj|C:\\Users\\user\\Documents\\GitHub\\RayTracingInOneWeekendCUDA\\RayTracingPart1\\RayTracing\\PPM_Output\\PPM_Output.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{21589348-59B1-4D22-A8C7-337AE8A95291}|PPM_Output\\PPM_Output.vcxproj|solutionrelative:PPM_Output\\PPM_Output.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PPM_Output.cpp",
+              "DocumentMoniker": "C:\\Users\\user\\Documents\\GitHub\\RayTracingInOneWeekendCUDA\\RayTracingPart1\\RayTracing\\PPM_Output\\PPM_Output.cpp",
+              "RelativeDocumentMoniker": "PPM_Output\\PPM_Output.cpp",
+              "ToolTip": "C:\\Users\\user\\Documents\\GitHub\\RayTracingInOneWeekendCUDA\\RayTracingPart1\\RayTracing\\PPM_Output\\PPM_Output.cpp",
+              "RelativeToolTip": "PPM_Output\\PPM_Output.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-09-20T16:02:47.145Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

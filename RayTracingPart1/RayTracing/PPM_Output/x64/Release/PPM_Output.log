@@ -1,0 +1,9 @@
+﻿  PPM_Output.cpp
+  Generating code
+  4 of 13 functions (30.8%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  PPM_Output.vcxproj -> C:\Users\user\Documents\GitHub\RayTracingInOneWeekendCUDA\RayTracingPart1\RayTracing\x64\Release\PPM_Output.exe
+  'pwsh.exe'은(는) 내부 또는 외부 명령, 실행할 수 있는 프로그램, 또는
+  배치 파일이 아닙니다.
