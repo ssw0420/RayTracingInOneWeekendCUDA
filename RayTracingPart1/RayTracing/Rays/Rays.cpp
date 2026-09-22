@@ -1,20 +1,73 @@
-// Rays.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+#include "color.h"
+#include "vec3.h"
+#include "ray.h"
 
 #include <iostream>
 
-int main()
+bool HitSphere(const Point3& center, double radius, const Ray& r)
 {
-    std::cout << "Hello World!\n";
+    Vec3 cToO = center - r.Origin();
+    auto a = Dot(r.Direction(), r.Direction());
+    auto b = -2.0 * Dot(r.Direction(), cToO);
+    auto c = Dot(cToO, cToO) - radius * radius;
+    auto discriminant = b * b - 4 * a * c;
+    return (discriminant >= 0);
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+Color RayColor(const Ray& r)
+{
+    if (HitSphere(Point3(0, 0, -1), 0.5, r))
+    {
+        return Color(1, 0, 0);
+    }
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+    Vec3 unitDirection = UnitVector(r.Direction());
+    double a = 0.5 * (unitDirection.Y() + 1.0);
+
+    return (1.0 - a) * Color(1.0, 1.0, 1.0) + a * Color(0.5, 0.7, 1.0);
+}
+
+int main()
+{
+    double aspectRatio = 16.0 / 9.0;
+    int imageWidth = 400;
+
+    // 최소 1의 높이를 보장
+    int imageHeight = int(imageWidth / aspectRatio);
+    imageHeight = (imageHeight < 1) ? 1 : imageHeight;
+
+    // Camera
+    double focalLength = 1.0;
+    double viewportHeight = 2.0;
+    double viewportWidth = viewportHeight * (double(imageWidth) / imageHeight);
+    Point3 cameraCenter = Point3(0, 0, 0);
+
+    Vec3 viewportU = Vec3(viewportWidth, 0, 0);
+    Vec3 viewportV = Vec3(0, -viewportHeight, 0);
+
+    // 픽셀 간 수평 및 수직 델타 벡터
+    Vec3 pixelDeltaU = viewportU / imageWidth;
+    Vec3 pixelDeltaV = viewportV / imageHeight;
+
+    Point3 viewportUpperLeft = cameraCenter - Vec3(0, 0, focalLength) - viewportU / 2 - viewportV / 2;
+    Point3 firstPixelCenter = viewportUpperLeft + 0.5 * (pixelDeltaU + pixelDeltaV);
+    
+    std::cout << "P3\n" << imageWidth << " " << imageHeight << "\n255\n";
+
+    for (int j = 0; j < imageHeight; ++j)
+    {
+        std::clog << "\rScanlines remaining: " << (imageHeight - j) << ' ' << std::flush;
+
+        for (int i = 0; i < imageWidth; ++i)
+        {
+            Point3 currentPixelCenter = firstPixelCenter + (i * pixelDeltaU) + (j * pixelDeltaV);
+            Vec3 rayDirection = currentPixelCenter - cameraCenter;
+            Ray r(cameraCenter, rayDirection);
+
+            Color pixelColor = RayColor(r);
+            WriteColor(std::cout, pixelColor);
+        }
+    }
+
+    std::clog << "\rDone.                   \n";
+}
