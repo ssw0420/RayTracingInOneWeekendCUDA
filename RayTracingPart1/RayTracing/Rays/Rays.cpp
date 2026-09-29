@@ -6,11 +6,11 @@
 
 bool HitSphere(const Point3& center, double radius, const Ray& r)
 {
-    Vec3 cToO = center - r.Origin();
-    auto a = Dot(r.Direction(), r.Direction());
-    auto b = -2.0 * Dot(r.Direction(), cToO);
-    auto c = Dot(cToO, cToO) - radius * radius;
-    auto discriminant = b * b - 4 * a * c;
+    Vec3 originToCenter = center - r.Origin();
+    double a = Dot(r.Direction(), r.Direction());
+    double b = -2.0 * Dot(r.Direction(), originToCenter);
+    double c = Dot(originToCenter, originToCenter) - radius * radius;
+    double discriminant = b * b - 4 * a * c;
     return (discriminant >= 0);
 }
 
