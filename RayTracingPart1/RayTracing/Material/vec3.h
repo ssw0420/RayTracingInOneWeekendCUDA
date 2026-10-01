@@ -160,4 +160,12 @@ inline Vector3 Reflect(const Vector3& v, const Vector3& n)
 	return v - 2.0 * Dot(v, n) * n;
 }
 
+inline Vector3 Refract(const Vector3& uv, const Vector3& n, double etaInOverEtaOut, double cosTheta)
+{
+	const Vector3 refractPerpendicular = etaInOverEtaOut * (uv + cosTheta * n);
+	const Vector3 refractParallel = -std::sqrt(std::fabs(1.0 - refractPerpendicular.LengthSquared())) * n;
+
+	return refractPerpendicular + refractParallel;
+}
+
 #endif
