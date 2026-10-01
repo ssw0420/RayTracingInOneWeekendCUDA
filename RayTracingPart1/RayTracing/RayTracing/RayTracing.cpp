@@ -1,20 +1,49 @@
-// RayTracing.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+#include "rtweekend.h"
+
+#include "camera.h"
+#include "hittable.h"
+#include "hittable_list.h"
+#include "sphere.h"
 
 #include <iostream>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    // World
+    HittableList world;
+
+    auto materialGround = std::make_shared<Lambertian>(Color(0.8, 0.8, 0.0));
+    auto materialCenter = std::make_shared<Lambertian>(Color(0.1, 0.2, 0.5));
+    auto materialLeft = std::make_shared<Dielectric>(1.50);
+    auto materialBubble = std::make_shared<Dielectric>(1.0 / 1.50);
+    auto materialRight = std::make_shared<Metal>(Color(0.8, 0.6, 0.2), 1.0);
+
+    world.Add(std::make_shared<Sphere>(Point3(0.0, -100.5, -1.0), 100.0, materialGround));
+    world.Add(std::make_shared<Sphere>(Point3(0.0, 0.0, -1.2), 0.5, materialCenter));
+
+    world.Add(std::make_shared<Sphere>(Point3(-1.0, 0.0, -1.0), 0.5, materialLeft));
+    world.Add(std::make_shared<Sphere>(Point3(-1.0, 0.0, -1.0), 0.4, materialBubble));
+
+    world.Add(std::make_shared<Sphere>(Point3(1.0, 0.0, -1.0), 0.5, materialRight));
+
+    //auto R = std::cos(Pi / 4);
+
+    //auto materialLeft = make_shared<Lambertian>(Color(0, 0, 1));
+    //auto materialRight = make_shared<Lambertian>(Color(1, 0, 0));
+
+    //world.Add(make_shared<Sphere>(Point3(-R, 0, -1), R, materialLeft));
+    //world.Add(make_shared<Sphere>(Point3(R, 0, -1), R, materialRight));
+
+    Camera camera;
+    camera.mAspectRatio = 16.0 / 9.0;
+    camera.mImageWidth = 400;
+    camera.mSamplesPerPixel = 100;
+    camera.mMaxDepth = 50;
+
+    camera.vfov = 90;
+    camera.lookfrom = Point3(-2, 2, 1);
+    camera.lookat = Point3(0, 0, -1);
+    camera.vup = Vec3(0, 1, 0);
+
+    camera.Render(world);
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
