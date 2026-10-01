@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Material.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -45,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vec3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

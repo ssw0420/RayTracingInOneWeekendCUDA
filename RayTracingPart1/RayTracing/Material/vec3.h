@@ -65,6 +65,14 @@ struct Vector3
 	{
 		return Vector3(RandomDouble(minimum, maximum), RandomDouble(minimum, maximum), RandomDouble(minimum, maximum));
 	}
+
+	bool NearZero() const
+	{	
+		double threshold = 1e-8;
+
+		// Return true if the vector is too close to zero in all dimensions
+		return (std::fabs(E[0]) < threshold) && (std::fabs(E[1]) < threshold) && (std::fabs(E[2]) < threshold);
+	}
 };
 
 typedef Vector3 Vec3;
@@ -145,6 +153,11 @@ inline Vector3 RandomOnHemisphere(const Vector3& normal)
 	}
 
 	return -unitSphereDirection;
+}
+
+inline Vector3 Reflect(const Vector3& v, const Vector3& n)
+{
+	return v - 2.0 * Dot(v, n) * n;
 }
 
 #endif

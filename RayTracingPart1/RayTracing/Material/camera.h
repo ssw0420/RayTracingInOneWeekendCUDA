@@ -2,6 +2,7 @@
 #define CAMERA_H
 
 #include "hittable.h"
+#include "Material.h"
 
 class Camera
 {
@@ -68,8 +69,13 @@ private:
 		HitRecord hitRecord;
 		if (world.Hit(ray, Interval(0.001, Infinity), hitRecord))
 		{
-			Vec3 direction = hitRecord.Normal + RandomOnHemisphere(hitRecord.Normal);
-			return 0.9 * RayColor(Ray(hitRecord.P, direction), depth - 1, world);
+			Ray scattered;
+			Color attenuation;
+
+			if (hitRecord.material->Scatter(ray, hitRecord, attenuation, scattered))
+			{
+				return attenuation * RayColor(scattered, depth - 1, world);
+			}
 		}
 
 		Vec3 unitDirection = UnitVector(ray.Direction());

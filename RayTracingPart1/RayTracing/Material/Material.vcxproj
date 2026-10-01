@@ -139,7 +139,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
@@ -147,6 +147,7 @@
     <ClInclude Include="hittable.h" />
     <ClInclude Include="hittable_list.h" />
     <ClInclude Include="interval.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="rtweekend.h" />
     <ClInclude Include="sphere.h" />

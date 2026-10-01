@@ -3,6 +3,8 @@
 
 #include "ray.h"
 
+class Material;
+
 class HitRecord
 {
 public:
@@ -17,6 +19,7 @@ public:
 	Vec3 Normal;
 	double T;
 	bool bFrontFace;
+	std::shared_ptr<Material> material;
 };
 
 class Hittable
