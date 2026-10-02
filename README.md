@@ -2,9 +2,9 @@
 
 Peter Shirley의 [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)를 구현한 프로젝트입니다.
 
-이미지 출력부터 재질(확산, 금속, 유리), 카메라 이동, 초점 흐림까지 구현하였습니다.
 
 정리 노션 페이지 (PDF 자료 포함): https://app.notion.com/p/Ray-Tracing-In-One-Weekend-3e137781ff7380189b07c3dd11d017e9?source=copy_link
+
 
 ![최종 렌더링](images/final.png)
 
