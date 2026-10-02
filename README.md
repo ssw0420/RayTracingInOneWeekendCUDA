@@ -2,9 +2,9 @@
 
 Peter Shirley의 [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)를 구현한 프로젝트입니다.
 
-이미지 출력부터 재질(확산, 금속, 유리), 카메라 이동, 초점 흐림까지 구현하였습니다.
 
 정리 노션 페이지 (PDF 자료 포함): https://app.notion.com/p/Ray-Tracing-In-One-Weekend-3e137781ff7380189b07c3dd11d017e9?source=copy_link
+
 
 ![최종 렌더링](images/final.png)
 
@@ -17,13 +17,13 @@ Peter Shirley의 [Ray Tracing in One Weekend](https://raytracing.github.io/books
 | | | |
 |:-:|:-:|:-:|
 | ![](images/01.png) | ![](images/02.png) | ![](images/03.png) |
-| **2장** PPM 이미지 출력 (위치별 색 그라디언트) | **4장** 광선 방향으로 그린 하늘 | **5장** 광선–구 교차 판정 |
+| **2장** PPM 이미지 출력 | **4장** 광선 방향으로 그린 하늘 | **5장** 광선–구 교차 판정 |
 | ![](images/04.png) | ![](images/05.png) | ![](images/06.png) |
 | **6장** 법선 시각화, 땅 구 추가 | **8장** 안티에일리어싱 적용 | **9장** 확산 재질, 반사율 10~90% (감마 보정 전) |
 | ![](images/07.png) | ![](images/08.png) | ![](images/09.png) |
 | **9장** 감마 보정 후 | **10장** 금속 fuzz 반사 (왼쪽 0.3, 오른쪽 1.0) | **11장** 항상 굴절하는 유리 구 (상이 뒤집힘) |
 | ![](images/10.png) | ![](images/11.png) | ![](images/12.png) |
-| **11장** 속이 빈 유리 구 (전반사, 슐릭 근사) | **12장** 카메라 이동, vfov 90 | **12장** vfov 20 (확대) |
+| **11장** 속이 빈 유리 구 (전반사, 슐릭 근사) | **12장** vfov 90 | **12장** vfov 20 |
 | ![](images/13.png) | ![](images/14.png) | |
 | **13장** 초점 흐림 | **14장** 최종 장면 | |
 
