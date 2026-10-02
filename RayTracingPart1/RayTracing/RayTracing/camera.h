@@ -87,6 +87,7 @@ private:
 			{
 				return attenuation * RayColor(scattered, depth - 1, world);
 			}
+			return Color(0.0, 0.0, 0.0);
 		}
 
 		Vec3 unitDirection = UnitVector(ray.Direction());
