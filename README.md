@@ -1,14 +1,18 @@
-# Ray Tracing in One Weekend (C++)
+# Ray Tracing in One Weekend
 
-Peter Shirley의 [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)를 C++로 따라 구현한 프로젝트입니다. 이미지 출력부터 재질(확산, 금속, 유리), 카메라 이동, 초점 흐림까지 구현하였습니다.
+Peter Shirley의 [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)를 구현한 프로젝트입니다.
 
-![최종 렌더링](images/14_final.png)
+이미지 출력부터 재질(확산, 금속, 유리), 카메라 이동, 초점 흐림까지 구현하였습니다.
+
+정리 노션 페이지 (PDF 자료 포함): https://app.notion.com/p/Ray-Tracing-In-One-Weekend-3e137781ff7380189b07c3dd11d017e9?source=copy_link
+
+![최종 렌더링](images/final.png)
 
 > 1920×1080 · 픽셀당 샘플 500 · 최대 반사 깊이 50
 
 ---
 
-## 갤러리
+## 결과
 
 | | | |
 |:-:|:-:|:-:|
@@ -70,12 +74,8 @@ RayTracing.exe > image.ppm
 진행 상황(남은 줄 수)은 표준 에러로 출력됩니다.
 
 
-## 다음 단계
-
-- CUDA로 렌더링 병렬화
-
 ## 참고
 
+- 참고 자료: https://github.com/eazuooz/RayTracinginOneWeekendinCUDA
 - Ray Tracing in One Weekend (v4.0.x): https://raytracing.github.io
 - 공식 코드: https://github.com/RayTracing/raytracing.github.io
-- 참고 자료: https://github.com/eazuooz/RayTracinginOneWeekendinCUDA
