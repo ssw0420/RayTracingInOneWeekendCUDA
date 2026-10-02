@@ -40,10 +40,13 @@ int main()
     camera.mSamplesPerPixel = 100;
     camera.mMaxDepth = 50;
 
-    camera.vfov = 90;
+    camera.vfov = 20;
     camera.lookfrom = Point3(-2, 2, 1);
     camera.lookat = Point3(0, 0, -1);
     camera.vup = Vec3(0, 1, 0);
+
+    camera.defocus_angle = 10.0;
+    camera.focus_distance = 3.4;
 
     camera.Render(world);
 }

@@ -168,4 +168,17 @@ inline Vector3 Refract(const Vector3& uv, const Vector3& n, double etaInOverEtaO
 	return refractPerpendicular + refractParallel;
 }
 
+inline Vec3 RandomInUnitDisk()
+{
+	while (true)
+	{
+		Vec3 p = Vec3(RandomDouble(-1.0, 1.0), RandomDouble(-1.0, 1.0), 0.0);
+
+		if (p.LengthSquared() < 1.0)
+		{
+			return p;
+		}
+	}
+}
+
 #endif

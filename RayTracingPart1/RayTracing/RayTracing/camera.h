@@ -47,7 +47,7 @@ private:
 		double focalLength = (lookfrom - lookat).Length();
 		double theta = DegreesToRadians(vfov);
 		double h = std::tan(theta / 2);
-		double viewportHeight = 2.0 * h * focalLength;
+		double viewportHeight = 2.0 * h * focus_distance;
 		double viewportWidth = viewportHeight * (double(mImageWidth) / mImageHeight);
 
 		w = UnitVector(lookfrom - lookat);
@@ -61,8 +61,13 @@ private:
 		mPixelDeltaU = viewportU / mImageWidth;
 		mPixelDeltaV = viewportV / mImageHeight;
 
-		Point3 viewportUpperLeft = mCenter - (focalLength * w) - viewportU / 2.0 - viewportV / 2.0;
+		Point3 viewportUpperLeft = mCenter - (focus_distance * w) - viewportU / 2.0 - viewportV / 2.0;
 		mFirstPixelCenter = viewportUpperLeft + 0.5 * (mPixelDeltaU + mPixelDeltaV);
+
+		double defocusRadius = focus_distance * std::tan(DegreesToRadians(defocus_angle * 0.5));
+
+		mDefocusDiskU = u * defocusRadius;
+		mDefocusDiskV = v * defocusRadius;
 	}
 
 	Color RayColor(const Ray& ray, int depth, const Hittable& world)
@@ -97,7 +102,7 @@ private:
 		Vec3 pixelSample = mFirstPixelCenter + ((pixelIndex + offset.X()) * mPixelDeltaU)
 			+ ((scanlineIndex + offset.Y()) * mPixelDeltaV);
 
-		Point3 rayOrigin = mCenter;
+		Point3 rayOrigin = (defocus_angle <= 0.0) ? mCenter : DefocusDiskSample();
 		Vec3 rayDirection = pixelSample - rayOrigin;
 
 		return Ray(rayOrigin, rayDirection);
@@ -106,6 +111,13 @@ private:
 	Vec3 SampleSquare() const
 	{
 		return Vec3(RandomDouble() - 0.5, RandomDouble() - 0.5, 0.0);
+	}
+
+	Point3 DefocusDiskSample() const
+	{
+		// 1.0 크기를 실제 렌즈에 맞춰서 크기 조절함
+		const Vec3 point = RandomInUnitDisk();
+		return mCenter + (point.X() * mDefocusDiskU) + (point.Y() * mDefocusDiskV);
 	}
 
 
@@ -122,6 +134,9 @@ public:
 	Point3 lookat = Point3(0, 0, -1);
 	Vec3 vup = Vec3(0, 1, 0); // 카메라의 위쪽 방향
 
+	double defocus_angle = 0;
+	double focus_distance = 10;
+
 private:
 	int mImageHeight = 0;
 	Point3 mCenter;
@@ -132,6 +147,9 @@ private:
 	Vec3 u, v, w; // 카메라 프레임 기저 벡터
 
 	double mPixelSamplesScale = 1.0;
+
+	Vec3 mDefocusDiskU;
+	Vec3 mDefocusDiskV;
 };
 
 #endif
